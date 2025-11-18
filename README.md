@@ -1,7 +1,7 @@
 # 💻 Portafolio / CV - Juan Andrés Lucero Ortega
 
 ## LIVE URL Proyecto: 
-## https://andrewscore.github.io/portafolio/
+ https://andrewscore.github.io/portafolio/
 
 ## 📋 Descripción del Proyecto
 
@@ -34,7 +34,8 @@ La base del proyecto es el desarrollo **Frontend** estándar, utilizando un enfo
 ## 📂 Estructura de Carpetas
 
 La estructura de archivos sigue un patrón común y organizado para proyectos de portafolio sencillos alojados en GitHub Pages, separando la presentación, la lógica y los activos multimedia.
-```mermaid
+
+```
 portafolio/
 ├── index.html
 ├── README.md
