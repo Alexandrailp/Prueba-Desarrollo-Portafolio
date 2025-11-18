@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Andrés Lucero Ortega - CV Portafolio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <nav id="nav-principal" role="navigation">
+        <!-- Contenedor de la barra de navegación visible (Logo y Hamburguesa) -->
+        <!-- Este wrapper es el que establece el max-width y la alineación en la barra superior -->
+        <div id="nav-wrapper">
+            
+            <!-- Logo -->
+            <a href="#inicio" id="logo-nav" class="flex centrar-items">
+                <i class="fa-solid fa-object-ungroup mr-2"></i> 
+                <span class="font-bold text-lg">J.A.L.O.</span>
+                
+            </a>
+
+            <!-- Etiqueta de Hamburguesa -->
+            <label for="menu-toggle-input" id="menu-toggle" class="hidden">
+                <i class="fas fa-bars"></i>
+            </label>
+        </div>
+        <!-- Checkbox oculto para el control del menú  -->
+        <!-- Debe ser el primer elemento para que el selector ~ funcione -->
+        <input type="checkbox" id="menu-toggle-input" aria-controls="menu-links" aria-expanded="false">
+        
+        <!-- Overlay para cerrar el menú al hacer clic en el fondo -->
+        <!-- ES HERMANO DE #menu-toggle-input -->
+        <label for="menu-toggle-input" id="menu-overlay" class="hidden"></label>
+        
+        <!-- Lista de enlaces ES HERMANO DE #menu-toggle-input -->
+        <div id="menu-links">
+            <!-- NOTA: Se añade el onclick para cerrar el menú en móvil después de hacer clic en un enlace -->
+            <a href="#inicio" class="item-nav" onclick="document.getElementById('menu-toggle-input').checked = false;"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#experiencia" class="item-nav" onclick="document.getElementById('menu-toggle-input').checked = false;"><i class="fas fa-briefcase"></i> Experiencia</a>
+            <a href="#habilidades" class="item-nav" onclick="document.getElementById('menu-toggle-input').checked = false;"><i class="fas fa-bolt"></i> Habilidades</a>
+            <a href="#portafolio" class="item-nav" onclick="document.getElementById('menu-toggle-input').checked = false;"><i class="fas fa-th-large"></i> Portafolio</a>
+            <a href="#contacto" class="item-nav" onclick="document.getElementById('menu-toggle-input').checked = false;"><i class="fas fa-paper-plane"></i> Contacto</a>
+        </div>
+
+    </nav>
+    
+    <header id="inicio" class="flex-col centrar-contenido texto-centro">
+        <div class="contenedor-secciones p-6 cont-hero margen-auto">
+            <div class="margen-auto">
+                <div>
+                    <i class="fas fa-user-circle icono-hero"></i>
+                </div>
+                <h1 class="titulo-hero">Juan Andrés Lucero Ortega</h1>
+                <p class="subtitulo-hero">Diseñador y Programador Multimedia</p>
+                <p class="margen-auto desc-hero">
+                    Diseñador Web y Gráfico con más de 12 años de experiencia en la creación de soluciones digitales innovadoras y efectivas. Habilidades en HTML, CSS, JavaScript, CMS, Adobe, Mailing.
+                </p>
+                <a href="#portafolio" class="boton-hero">Ver Portafolio</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor-secciones">
+
+        <section id="experiencia" class="main-seccion mb-12">
+            <h2 class="seccion-titulo">Experiencia Laboral</h2>
+            <div class="espacio-y-8">
+
+                <article class="seccion-card">
+                    <header class="flex entre-contenido centrar-items flex-col flex-row entre-contenido">
+                        <div class="mb-2 mb-0 texto-izq texto-centro">
+                            <h3 class="card-titulo">Diseñador de sitios web</h3>
+                            <p class="card-subtitulo">Gatek SpA</p>
+                        </div>
+                        <time class="card-tiempo">septiembre de 2019 - Presente</time>
+                    </header>
+                    <p class="card-descripcion">
+                        Me desempeño como diseñador y programador multimedia en Gatek Spa desde el 23 de Septiembre del 2019, realizar imagen gráfica para marcas de vehículos como Seat, Skoda, Autokas, diseño de gráfica para sitios web, mailing (montaje y diseño), diseño de software.
+                    </p>
+                </article>
+
+                <article class="seccion-card">
+                    <header class="flex entre-contenido centrar-items flex-col flex-row entre-contenido">
+                        <div class="mb-2 mb-0 texto-izq texto-centro">
+                            <h3 class="card-titulo">Diseñador y Programador Multimedia</h3>
+                            <p class="card-subtitulo">VRWeb</p>
+                        </div>
+                        <time class="card-tiempo">2015 - 2019</time>
+                    </header>
+                    <p class="card-descripcion">
+                        Responsable del diseño, desarrollo y mantenimiento de proyectos web, enfocado en la usabilidad y la experiencia del usuario.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="habilidades" class="mb-12">
+            <h2 class="seccion-titulo">Habilidades Técnicas y Aptitudes</h2>
+
+            <div class="cont-habilidades-gral">
+                <h3 class="card-subtitulo mb-6 texto-centro">Tecnologías y Plataformas</h3>
+                <div class="cont-habilidades mb-8">
+                    <div class="etiqueta-skill skill-html"><i class="fab fa-html5"></i>HTML5</div>
+                    <div class="etiqueta-skill skill-css"><i class="fab fa-css3-alt"></i>CSS3</div>
+                    <div class="etiqueta-skill skill-js"><i class="fab fa-js-square"></i>JavaScript</div>
+                    <div class="etiqueta-skill skill-wp"><i class="fab fa-wordpress"></i>WordPress (CMS)</div>
+                    <div class="etiqueta-skill skill-ps"><i class="fas fa-shopping-cart"></i>PrestaShop (CMS E-commerce)</div>
+                    <div class="etiqueta-skill skill-html"><i class="fas fa-mobile-alt"></i>Diseño Adaptativo Responsivo</div>
+                    <div class="etiqueta-skill skill-css"><i class="fas fa-envelope"></i>Mailing & Gráfica</div>
+                    <div class="etiqueta-skill skill-adobe"><i class="fa-regular fa-object-group"></i>Adobe Creative</div>
+                    <div class="etiqueta-skill skill-figma"><i class="fa-brands fa-figma"></i>Figma</div>
+                </div>
+
+                <h3 class="card-subtitulo mb-6 mt-8 texto-centro">Aptitudes Clave</h3>
+                <div class="cont-habilidades">
+                    <div class="etiqueta-skill skill-aptitud"><i class="fas fa-mouse-pointer"></i>Diseño de Interacción</div>
+                    <div class="etiqueta-skill skill-aptitud"><i class="fas fa-sitemap"></i>Wireframing</div>
+                    <div class="etiqueta-skill skill-aptitud"><i class="fas fa-pen-nib"></i>Diseño de Logotipos</div>
+                    <div class="etiqueta-skill skill-aptitud"><i class="fa-solid fa-user-pen"></i>UX/UI</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portafolio" class="main-seccion mb-12">
+            <h2 class="seccion-titulo">Portafolio</h2>
+
+            <div class="grid-portafolio">
+
+                <article class="tarjeta-proyecto">
+                    <img src="assets/img/iguana-page-imagen.jpg" alt="Iguana Page" class="imagen-proyecto">
+                    <div class="cont-proyecto flex flex-col entre-contenido">
+                        <div>
+                            <h4 class="titulo-proyecto">Iguana Page</h4>
+                            <p class="desc-proyecto">Desafio onepage sobre iguanas</p>
+                            <span class="etiqueta-tec">HTML</span>
+                            <span class="etiqueta-tec">CSS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-proyecto">
+                    <img src="assets/img/cuppon-imagen.jpg" alt="CUPPON" class="imagen-proyecto">
+                    <div class="cont-proyecto flex flex-col entre-contenido">
+                        <div>
+                            <h4 class="titulo-proyecto">CUPPON</h4>
+                            <p class="desc-proyecto">Desafio onepage cuppon </p>
+                            <span class="etiqueta-tec">HTML5</span>
+                            <span class="etiqueta-tec">CSS3</span>
+                            <span class="etiqueta-tec">Bootstrap</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-proyecto">
+                    <img src="assets/img/decoplantas-imagen.jpg" alt="DecoPlantas" class="imagen-proyecto">
+                    <div class="cont-proyecto flex flex-col entre-contenido">
+                        <div>
+                            <h4 class="titulo-proyecto">DecoPlantas</h4>
+                            <p class="desc-proyecto">Desafio onepage sobre Plantas decorativas</p>
+                            <span class="etiqueta-tec">HTML</span>
+                            <span class="etiqueta-tec">CSS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-proyecto">
+                    <img src="assets/img/curriculum-imagen.jpg" alt="Curriculum" class="imagen-proyecto">
+                    <div class="cont-proyecto flex flex-col entre-contenido">
+                        <div>
+                            <h4 class="titulo-proyecto">Curriculum</h4>
+                            <p class="desc-proyecto">Desafio Curriculum</p>
+                            <span class="etiqueta-tec">HTML</span>
+                            <span class="etiqueta-tec">CSS</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="educacion" class="main-seccion">
+            <h2 class="seccion-titulo">Educación</h2>
+            <div class="grid-estudios">
+            <div class="seccion-card">
+                <h3 class="card-titulo">Desarrollador Full Stack Javascript</h3>
+                <p class="card-subtitulo">Desafiolatam</p>
+                <time class="card-tiempo">2025 - Cursando</time>
+                <p class="card-descripcion">
+                        Un desarrollador Full Stack es un profesional en el campo de la programación y el desarrollo de software que tiene habilidades tanto en el desarrollo de front-end como en el de back-end de una aplicación o sitio web.
+                    </p>
+            </div>
+            <div class="seccion-card">
+                <h3 class="card-titulo">Inglés</h3>
+                <p class="card-subtitulo">CCS (Camara de Comercio Santiago)</p>
+                <time class="card-tiempo">2016</time>
+                <p class="card-descripcion">
+                        Inglés básico aplicado a las comunicaciones laborales.
+                </p>
+            </div>
+            <div class="seccion-card">
+                <h3 class="card-titulo">Jquery</h3>
+                <p class="card-subtitulo">Academia Mac Pc Crossmedia Training Center</p>
+                <time class="card-tiempo">2015</time>
+                <p class="card-descripcion">
+                        Interactividad con jQuery
+                </p>
+            </div>
+            <div class="seccion-card">
+                <h3 class="card-titulo">HTML5 Y CSS3</h3>
+                <p class="card-subtitulo">Academia Mac Pc Crossmedia Training Center</p>
+                <time class="card-tiempo">2014</time>
+                <p class="card-descripcion">
+                        HTML: Esencial: Desarrollo de sitios, integración de medios y standares web
+                </p>
+            </div>
+            <div class="seccion-card">
+                <h3 class="card-titulo">Técnico Nivel Superior en Diseño y Programación Multimedia</h3>
+                <p class="card-subtitulo">Inacap, Santiago sur</p>
+                <time class="card-tiempo">2006 - 2009</time>
+            </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="texto-centro p-6 cont-contacto">
+            <h2 class="mb-4">¡Trabajemos juntos!</h2>
+            <p class="mb-8">Conversemos sobre tu próximo proyecto digital.</p>
+            <div class="cont-enlaces flex centrar-contenido flex-row">
+                <a href="https://wa.me/56900000000" target="_blank" class="redondeado-total boton-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Contactar por WhatsApp
+                </a>
+                <a href="mailto:juan_lucero24@hotmail.com" class="redondeado-total boton-mail mt-0">
+                    <i class="fas fa-envelope"></i>
+                    Enviar Correo
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="contenedor-secciones texto-centro cont-footer">
+            <p>&copy; 2025 Juan Andrés Lucero Ortega. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

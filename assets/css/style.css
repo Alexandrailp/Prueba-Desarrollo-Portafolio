@@ -1,0 +1,541 @@
+/* ------------------------------------- */
+        /* 1. CONFIGURACIÓN GENERAL Y VARIABLES */
+        /* ------------------------------------- */
+
+        :root {
+            --color-principal: #1e3a8a; /* Azul oscuro */
+            --color-acento: #fcd34d; /* Amarillo para acentos */
+            --color-fondo: #f9fafb;
+            --color-texto: #1f2937;
+            --color-oscuro: #111827;
+            --color-enlace-hover: #1e40af;
+            --color-whatsapp: #25d366; /* Verde WhatsApp */
+            --color-whatsapp-hover: #1da84d; 
+            --sombra-larga: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Estilos base */
+        html {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden; 
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; 
+        }
+
+        /* Contenedor principal de secciones */
+        .contenedor-secciones {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+            max-width: 1024px;
+        }
+        
+        /* Utilidades */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .centrar-items { align-items: center; }
+        .centrar-contenido { justify-content: center; }
+        .entre-contenido { justify-content: space-between; }
+        .texto-centro { text-align: center; }
+        .margen-auto { margin-left: auto; margin-right: auto; }
+        .redondeado-total { border-radius: 9999px; }
+        .p-6 { padding: 1.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-8 { margin-top: 2rem; }
+        .espacio-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
+        .espacio-x-4 > :not([hidden]) ~ :not([hidden]) { margin-left: 1rem; }
+        .mr-2 { margin-right: 0.5rem; }
+        .text-lg { font-size: 1.125rem; }
+        .font-bold { font-weight: 700; }
+        
+        /* Media Queries generales */
+        @media (min-width: 640px) { /* sm */
+            .flex-row { flex-direction: row; }
+            .espacio-x-6 > :not([hidden]) ~ :not([hidden]) { margin-left: 1.5rem; margin-right: 0; }
+            .mt-0 { margin-top: 0 !important; }
+        }
+        @media (min-width: 768px) { /* md */
+            .flex-row { flex-direction: row; }
+            .inicio-contenido { justify-content: flex-start; }
+            .texto-izq { text-align: left; }
+            .mb-0 { margin-bottom: 0; }
+            .entre-contenido { justify-content: space-between; }
+            .hidden { display: none !important; } /* Ocultar en desktop */
+            .flex { display: flex !important; }  /* Mostrar en desktop */
+        }
+
+        /* ------------------------------------- */
+        /* 2. NAVEGACIÓN */
+        /* ------------------------------------- */
+
+        #nav-principal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 40;
+            background-color: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(8px);
+            height: 3.5rem; 
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+        
+        /* Wrapper para el contenido visible de la barra de navegación */
+        #nav-wrapper {
+            width: 100%;
+            max-width: 1024px;
+            height: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        #logo-nav {
+            color: var(--color-acento);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0; 
+        }
+        #logo-nav i {
+            font-size: 1.5rem;
+        }
+
+        /* Ocultar el checkbox que controla el estado del menú */
+        #menu-toggle-input {
+            display: none;
+        }
+
+        /* Icono de Hamburguesa (Visible solo en móvil) */
+        #menu-toggle {
+            cursor: pointer;
+            z-index: 60; 
+            color: white;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            transition: color 0.2s;
+            display: none; /* Ocultar por defecto */
+        }
+        #menu-toggle:hover {
+             color: var(--color-acento);
+        }
+        
+        /* Menú de Enlaces (Mobile off-canvas setup - Estado cerrado por defecto) */
+        #menu-links {
+            position: fixed;
+            top: 0;
+            right: 0; 
+            width: 75%; 
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--color-oscuro);
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 4rem 1.5rem 1.5rem 1.5rem; 
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 50; 
+            display: none;
+        }
+
+        /* Menú de Enlaces en Desktop: visible y alineado en la barra */
+        @media (min-width: 768px) {
+            #menu-links {
+                display: flex !important; /* Muestra el menú en desktop */
+                position: static;
+                width: auto;
+                max-width: none;
+                height: auto;
+                background-color: transparent;
+                box-shadow: none;
+                flex-direction: row; /* Horizontal */
+                padding: 0; 
+                transform: translateX(0); 
+                z-index: auto;
+                margin-left: auto;
+            }
+        }
+
+
+        .item-nav {
+            padding: 0.5rem 0.75rem;
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s, background-color 0.2s;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .item-nav:hover {
+            color: var(--color-acento);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Overlay */
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0); 
+            z-index: 45; /* Entre el nav y el body */
+            pointer-events: none; /* No intercepta clics */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* ------------------------------------- */
+        /* MOBILE STYLES */
+        /* ------------------------------------- */
+        @media (max-width: 767px) {
+            
+            #menu-toggle {
+                display: block; /* Muestra el botón hamburguesa */
+            }
+            
+            /* Ajuste para los elementos dentro de menu-links en móvil */
+            #menu-links .item-nav {
+                width: 100%;
+                margin: 0.5rem 0;
+                padding: 1rem 1rem; 
+                font-size: 1.125rem;
+            }
+            
+            /* Cuando el checkbox está marcado, mueve el menú */
+            /* ESTO FUNCIONA PORQUE #menu-links ES HERMANO DE #menu-toggle-input */
+            #menu-toggle-input:checked ~ #menu-links {
+                transform: translateX(0); /* Mueve el menú a la vista */
+                display: flex; /* Aseguramos que el menú se muestre en móvil cuando se activa */
+            }
+
+            /* Cuando el checkbox está marcado, muestra el overlay */
+            #menu-toggle-input:checked ~ #menu-overlay {
+                opacity: 1;
+                pointer-events: auto; /* Permite cerrar al hacer clic en el fondo */
+                background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+            }
+        }
+        
+        /* ------------------------------------- */
+        /* HERO, SECCIONES, ETC. */
+        /* ------------------------------------- */
+
+        #inicio {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            /*background-color: var(--color-oscuro);*/
+            background-image: url(../img/web-design-background.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            padding-top: 5rem;
+        }
+        /* Estilos de HERO, SECCIONES, CONTACTO, FOOTER */
+
+        .cont-hero {
+            position: relative; 
+            z-index: 10;
+            max-width: 48rem;
+            margin: auto; 
+        }
+        .icono-hero {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .titulo-hero {
+          font-size: 3rem;
+          font-weight: 800;
+          line-height: 1.25;
+        }
+        @media (max-width: 640px) {
+            .titulo-hero {
+              font-size: 2.5rem;
+            }
+        }
+        .subtitulo-hero {
+          color: #a5b4fc;
+          font-size: 1.5rem;
+          font-weight: 500;
+          margin-bottom: 1.5rem;
+        }
+        .desc-hero {
+            max-width: 42rem;
+            margin-bottom: 2rem;
+        }
+        .boton-hero {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--color-acento);
+            color: var(--color-oscuro);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+        }
+        .boton-hero:hover {
+          background-color: #fcd97d;
+        }
+        
+        .main-seccion {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .seccion-titulo {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            margin-top:0;
+            margin-bottom: 3rem;
+            color: var(--color-texto);
+        }
+        .cont-tarjeta-central {
+            max-width: 48rem; 
+            margin: 0 auto;
+        }
+        .seccion-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--sombra-media);
+        }
+        .card-titulo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-principal);
+            margin:0;
+        }
+        .card-subtitulo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            margin:0;
+        }
+        .card-tiempo {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .card-descripcion { 
+            font-size: 0.875rem;
+        }
+        
+        #habilidades {
+            background-color: #f4f4f4;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-sizing: border-box;
+        }
+        .cont-habilidades-gral {
+            max-width: 64rem; 
+            margin: 0 auto;
+        }
+
+        .cont-habilidades {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0 0.5rem; 
+        }
+        
+        .etiqueta-skill {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .etiqueta-skill:hover {
+            transform: translateY(-2px);
+        }
+        
+        .etiqueta-skill i {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        /* Colores para las etiquetas de Habilidad */
+        .skill-html { background-color: #e34c26; }
+        .skill-css { background-color: #264de4; }
+        .skill-js { background-color: #f7df1e; color: #323330; }
+        .skill-wp { background-color: #21759b; }
+        .skill-ps { background-color: #dd2c00; }
+        .skill-aptitud { background-color: #6a1b9a; }
+        .skill-adobe { background-color: #991818; }
+        .skill-figma { background-color: #1f1f1f; }
+        
+        .grid-portafolio, .grid-estudios {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            padding: 0 0.5rem; 
+        }
+        @media (min-width: 768px) {
+            .grid-portafolio, .grid-estudios { 
+                grid-template-columns: repeat(2, 1fr); 
+                padding: 0;
+            }
+        }
+        @media (min-width: 1024px) {
+            .grid-portafolio, .grid-estudios { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+        }
+
+        .tarjeta-proyecto {
+            display: flex;
+            flex-direction: column;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .tarjeta-proyecto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        .imagen-proyecto {
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+        .cont-proyecto {
+          padding: 1.5rem;
+          flex-grow: 1;
+        }
+        .titulo-proyecto {
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+        .desc-proyecto {
+          margin-bottom: 0.75rem;
+          color: #4b5563;
+        }
+
+        .etiqueta-tec {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 9999px;
+            background-color: #f4f4f4;
+            color: #333; 
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        #contacto {
+             box-shadow: var(--sombra-larga);
+        }
+        .cont-contacto {
+             padding: 2rem; 
+             border-radius: 0.75rem;
+             margin-bottom: 4rem;
+        }
+        #contacto h2 {
+            font-size: 1.875rem; 
+            font-weight: 800; 
+        }
+        #contacto p {
+            font-size: 1.25rem; 
+            font-weight: 500; 
+        }
+        
+        .cont-enlaces {
+            gap: 10px;
+            flex-direction: row;
+        }
+        .cont-enlaces a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        
+        
+        .boton-whatsapp {
+            background-color: var(--color-whatsapp);
+        }
+        .boton-whatsapp:hover {
+            background-color: var(--color-whatsapp-hover);
+            transform: translateY(-1px);
+        }
+
+        .boton-mail {
+            background-color: var(--color-principal);
+        }
+        .boton-mail:hover {
+            background-color: var(--color-enlace-hover);
+            transform: translateY(-1px);
+        }
+
+
+        @media (max-width: 639px) { /* Móvil */
+        .cont-enlaces {
+            flex-direction: column;
+        }
+        .cont-enlaces a {
+                margin-bottom: 1rem; 
+                margin-right: 0;
+            }
+        }
+        .cont-enlaces a:last-child {
+             margin-right: 0;
+             margin-bottom: 0;
+        }
+
+        .cont-enlaces a i {
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--color-oscuro);
+            color: white;
+        }
+        .cont-footer { 
+            padding-top: 1rem; 
+            padding-bottom: 1rem;
+            font-size: 0.875rem;
+        }
